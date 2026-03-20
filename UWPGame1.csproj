@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <Win32Resource>SDL2-WinRTResources.res</Win32Resource>
+    <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <Nullable>disable</Nullable>
+    <UseUwp>true</UseUwp>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win-x64;</RuntimeIdentifiers>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <PublishAot>true</PublishAot>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
+    <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <!--
+      This is a non-XAML app (just a simple CoreApplication app), so the XAML compiler is not needed.
+      Disabling this property fixes that, and also removes the Windows SDK check for the 26100 SDK.
+      Not importing the XAML compiler removes some unnecessary declared project capabilities. Note:
+      this property should not be disabled if custom PRI resources are needed by the application.      
+    -->
+    <EnableXamlCompilerTargetsForUwpApps>false</EnableXamlCompilerTargetsForUwpApps>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(BuildingInsideVisualStudio)'=='true'">
+    <AvailableItemName Include="AppxManifest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <RdXmlFile Include="rd.xml" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="StarWorks" Version="1.0.0" />
+	</ItemGroup>
+
+  <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
+    <Message Text="Restoring dotnet tools" Importance="High" />
+    <Exec Command="dotnet tool restore" />
+  </Target>
+</Project>
