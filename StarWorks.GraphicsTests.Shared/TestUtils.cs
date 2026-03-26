@@ -34,7 +34,7 @@ public static class TestUtils
 
 	public static string GetShaderPath(string shaderName)
 	{
-		return "Content/Shaders/Compiled/" + shaderName + ".spv";
+		return "Content/Shaders/SPIRV/" + shaderName + ".spv";
 	}
 
 	public static string GetHLSLPath(string shaderName)
