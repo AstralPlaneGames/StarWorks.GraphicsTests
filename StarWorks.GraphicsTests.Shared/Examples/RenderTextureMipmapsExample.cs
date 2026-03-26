@@ -55,18 +55,18 @@ class RenderTextureMipmapsExample : Example
 		Shader vertShaderModule = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuadWithMatrix.vert"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuadWithMatrix.vert") : TestUtils.GetHLSLPath("TexturedQuadWithMatrix.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader fragShaderModule = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuad.frag"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuad.frag") : TestUtils.GetHLSLPath("TexturedQuad.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

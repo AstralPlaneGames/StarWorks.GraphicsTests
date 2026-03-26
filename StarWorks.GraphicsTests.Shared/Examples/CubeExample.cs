@@ -105,63 +105,63 @@ namespace MoonWorksGraphicsTests
 			Shader cubeVertShader = ShaderCross.Create(
 				GraphicsDevice,
 				RootTitleStorage,
-				TestUtils.GetHLSLPath("PositionColorWithMatrix.vert"),
+				IsMobile ? TestUtils.GetShaderPath("PositionColorWithMatrix.vert") : TestUtils.GetHLSLPath("PositionColorWithMatrix.vert"),
 				"main",
-				ShaderCross.ShaderFormat.HLSL,
+				IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 				ShaderStage.Vertex
 			);
 
 			Shader cubeFragShader = ShaderCross.Create(
 				GraphicsDevice,
 				RootTitleStorage,
-				TestUtils.GetHLSLPath("SolidColor.frag"),
+				IsMobile ? TestUtils.GetShaderPath("SolidColor.frag") : TestUtils.GetHLSLPath("SolidColor.frag"),
 				"main",
-				ShaderCross.ShaderFormat.HLSL,
+				IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 				ShaderStage.Fragment
 			);
 
 			Shader skyboxVertShader = ShaderCross.Create(
 				GraphicsDevice,
 				RootTitleStorage,
-				TestUtils.GetHLSLPath("Skybox.vert"),
+				IsMobile ? TestUtils.GetShaderPath("Skybox.vert") : TestUtils.GetHLSLPath("Skybox.vert"),
 				"main",
-				ShaderCross.ShaderFormat.HLSL,
+				IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 				ShaderStage.Vertex
 			);
 
 			Shader skyboxFragShader = ShaderCross.Create(
 				GraphicsDevice,
 				RootTitleStorage,
-				TestUtils.GetHLSLPath("Skybox.frag"),
+				IsMobile ? TestUtils.GetShaderPath("Skybox.frag") : TestUtils.GetHLSLPath("Skybox.frag"),
 				"main",
-				ShaderCross.ShaderFormat.HLSL,
+				IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 				ShaderStage.Fragment
 			);
 
 			Shader emptyFragShader = ShaderCross.Create(
 				GraphicsDevice,
 				RootTitleStorage,
-				TestUtils.GetHLSLPath("Empty.frag"),
+				IsMobile ? TestUtils.GetShaderPath("Empty.frag") : TestUtils.GetHLSLPath("Empty.frag"),
 				"main",
-				ShaderCross.ShaderFormat.HLSL,
+				IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 				ShaderStage.Fragment
 			);
 
 			Shader blitVertShader = ShaderCross.Create(
 				GraphicsDevice,
 				RootTitleStorage,
-				TestUtils.GetHLSLPath("TexturedQuad.vert"),
+				IsMobile ? TestUtils.GetShaderPath("TexturedQuad.vert") : TestUtils.GetHLSLPath("TexturedQuad.vert"),
 				"main",
-				ShaderCross.ShaderFormat.HLSL,
+				IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 				ShaderStage.Vertex
 			);
 
 			Shader blitFragShader = ShaderCross.Create(
 				GraphicsDevice,
 				RootTitleStorage,
-				TestUtils.GetHLSLPath("TexturedDepthQuad.frag"),
+				IsMobile ? TestUtils.GetShaderPath("TexturedDepthQuad.frag") : TestUtils.GetHLSLPath("TexturedDepthQuad.frag"),
 				"main",
-				ShaderCross.ShaderFormat.HLSL,
+				IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 				ShaderStage.Fragment
 			);
 

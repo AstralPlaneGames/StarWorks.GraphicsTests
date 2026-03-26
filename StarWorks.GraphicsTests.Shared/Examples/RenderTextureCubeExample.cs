@@ -35,18 +35,18 @@ class RenderTextureCubeExample : Example
 		Shader vertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("Skybox.vert"),
+			IsMobile ? TestUtils.GetShaderPath("Skybox.vert") : TestUtils.GetHLSLPath("Skybox.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader fragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("Skybox.frag"),
+			IsMobile ? TestUtils.GetShaderPath("Skybox.frag") : TestUtils.GetHLSLPath("Skybox.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

@@ -58,18 +58,18 @@ class PullSpriteBatchExample : Example
         Shader vertShader = ShaderCross.Create(
             GraphicsDevice,
             RootTitleStorage,
-            TestUtils.GetHLSLPath("PullSpriteBatch.vert"),
+            IsMobile ? TestUtils.GetShaderPath("PullSpriteBatch.vert") : TestUtils.GetHLSLPath("PullSpriteBatch.vert"),
             "main",
-            ShaderCross.ShaderFormat.HLSL,
+            IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
             ShaderStage.Vertex
         );
 
         Shader fragShader = ShaderCross.Create(
             GraphicsDevice,
             RootTitleStorage,
-            TestUtils.GetHLSLPath("TexturedQuadColor.frag"),
+            IsMobile ? TestUtils.GetShaderPath("TexturedQuadColor.frag") : TestUtils.GetHLSLPath("TexturedQuadColor.frag"),
             "main",
-            ShaderCross.ShaderFormat.HLSL,
+            IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
             ShaderStage.Fragment
         );
 

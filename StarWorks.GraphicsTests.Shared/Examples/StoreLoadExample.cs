@@ -15,18 +15,18 @@ class StoreLoadExample : Example
 		Shader vertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("RawTriangle.vert"),
+			IsMobile ? TestUtils.GetShaderPath("RawTriangle.vert") : TestUtils.GetHLSLPath("RawTriangle.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader fragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("SolidColor.frag"),
+			IsMobile ? TestUtils.GetShaderPath("SolidColor.frag") : TestUtils.GetHLSLPath("SolidColor.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

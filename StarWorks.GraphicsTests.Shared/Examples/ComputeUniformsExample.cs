@@ -21,9 +21,9 @@ class ComputeUniformsExample : Example
 		GradientPipeline = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("GradientTexture.comp"),
+			IsMobile ? TestUtils.GetShaderPath("GradientTexture.comp") : TestUtils.GetHLSLPath("GradientTexture.comp"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL
 		);
 
 		RenderTexture = Texture.Create2D(

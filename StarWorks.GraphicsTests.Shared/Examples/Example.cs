@@ -4,6 +4,7 @@ using MoonWorks.Graphics;
 using MoonWorks.Input;
 using MoonWorks.Storage;
 using MoonWorks.Video;
+using SDL3;
 
 namespace MoonWorksGraphicsTests;
 
@@ -15,6 +16,8 @@ public abstract class Example
 	public TitleStorage RootTitleStorage;
 	public UserStorage UserStorage;
 	public VideoDevice VideoDevice;
+
+	public bool IsMobile => SDL.SDL_GetPlatform() == "Android" || SDL.SDL_GetPlatform() == "iOS";
 
 	public void Assign(Game game)
 	{

@@ -1,0 +1,104 @@
+using Android.App;
+using Android.Content.PM;
+using Android.OS;
+using Android.Views;
+using MoonWorks;
+using Org.Libsdl.App;
+using System;
+using SDL = SDL3.SDL;
+
+namespace MoonWorksGraphicsTests;
+
+[Activity(
+	Label = "@string/app_name",
+	MainLauncher = true,
+	AlwaysRetainTaskState = true,
+	LaunchMode = LaunchMode.SingleInstance,
+	ScreenOrientation = ScreenOrientation.SensorLandscape,
+	ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden |
+							ConfigChanges.ScreenSize | ConfigChanges.ScreenLayout
+)]
+public class MainActivity : SDLActivity
+{
+	protected override string[] GetLibraries()
+	{
+		return ["SDL3"];
+	}
+
+	protected override void Main()
+	{
+		// Enable high DPI "Retina" support. Trust us, you'll want this.
+		SDL.SDL_SetHint("FNA_GRAPHICS_ENABLE_HIGHDPI", "1");
+
+		// Keep mouse and touch input separate.
+		SDL.SDL_SetHint(SDL.SDL_HINT_MOUSE_TOUCH_EVENTS, "0");
+		SDL.SDL_SetHint(SDL.SDL_HINT_TOUCH_MOUSE_EVENTS, "0");
+
+		SDL.SDL_RunApp(0, IntPtr.Zero, FakeMain, IntPtr.Zero);
+	}
+
+	static int FakeMain(int argc, IntPtr argv)
+	{
+		RealMain();
+		return 0;
+	}
+
+	static void RealMain()
+	{
+		var windowCreateInfo = new WindowCreateInfo(
+			"MoonWorksGraphicsTests",
+			640,
+			480,
+			ScreenMode.Windowed
+		);
+
+		var framePacingSettings = FramePacingSettings.CreateCapped(60, 120);
+
+		var game = new Game1(
+			new AppInfo("MoonsideGames", "MoonWorksGraphicsTests"),
+			windowCreateInfo,
+			framePacingSettings,
+			false
+		);
+
+		game.Run();
+	}
+
+	protected override void OnCreate(Bundle savedInstanceState)
+	{
+		base.OnCreate(savedInstanceState);
+
+		Window.AddFlags(WindowManagerFlags.KeepScreenOn);
+		Window.AddFlags(WindowManagerFlags.TranslucentNavigation);
+		Window.AddFlags(WindowManagerFlags.TranslucentStatus);
+	}
+
+	public override void OnWindowFocusChanged(bool hasFocus)
+	{
+		base.OnWindowFocusChanged(hasFocus);
+
+		if (hasFocus)
+			SetImmersive();
+	}
+
+	private void SetImmersive()
+	{
+		if (System.OperatingSystem.IsAndroidVersionAtLeast(30))
+		{
+			Window.SetDecorFitsSystemWindows(false);
+			Window.InsetsController.SystemBarsBehavior = (int)WindowInsetsControllerBehavior.ShowTransientBarsBySwipe;
+			//NO Color Type error.
+			//Window.SetNavigationBarColor(Color.Transparent);
+			Window.InsetsController.Hide(WindowInsets.Type.SystemBars());
+		}
+		else
+		{
+#pragma warning disable CS0618
+			this.Window.DecorView.SystemUiVisibility =
+				(StatusBarVisibility) (SystemUiFlags.LayoutStable | SystemUiFlags.LayoutHideNavigation |
+									SystemUiFlags.LayoutFullscreen | SystemUiFlags.HideNavigation |
+									SystemUiFlags.Fullscreen | SystemUiFlags.ImmersiveSticky);
+#pragma warning restore CS0618
+		}
+	}
+}

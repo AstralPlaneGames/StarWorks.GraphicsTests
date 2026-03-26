@@ -20,36 +20,36 @@ class BasicComputeExample : Example
         ComputePipeline fillTextureComputePipeline = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("FillTexture.comp"),
+			IsMobile ? TestUtils.GetShaderPath("FillTexture.comp") : TestUtils.GetHLSLPath("FillTexture.comp"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL
 		);
 
         // Create the compute pipeline that calculates squares of numbers
         ComputePipeline calculateSquaresComputePipeline = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("CalculateSquares.comp"),
+			IsMobile ? TestUtils.GetShaderPath("CalculateSquares.comp") : TestUtils.GetHLSLPath("CalculateSquares.comp"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL
 		);
 
 		// Create the graphics pipeline
 		Shader vertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuad.vert"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuad.vert") : TestUtils.GetHLSLPath("TexturedQuad.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader fragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuad.frag"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuad.frag") : TestUtils.GetHLSLPath("TexturedQuad.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

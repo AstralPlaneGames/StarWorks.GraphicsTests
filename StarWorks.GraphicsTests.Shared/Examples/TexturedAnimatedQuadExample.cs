@@ -35,18 +35,18 @@ class TexturedAnimatedQuadExample : Example
 		Shader vertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuadWithMatrix.vert"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuadWithMatrix.vert") : TestUtils.GetHLSLPath("TexturedQuadWithMatrix.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader fragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuadWithMultiplyColor.frag"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuadWithMultiplyColor.frag") : TestUtils.GetHLSLPath("TexturedQuadWithMultiplyColor.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

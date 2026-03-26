@@ -47,6 +47,7 @@ public class Game1 : Game
 	];
 
 	int ExampleIndex = 0;
+	DateTime LastIndexChange = DateTime.Now.AddSeconds(3);
 
     public Game1(
 		AppInfo appInfo,
@@ -60,8 +61,15 @@ public class Game1 : Game
 		ShaderFormat.SPIRV | ShaderFormat.DXIL | ShaderFormat.MSL | ShaderFormat.DXBC,
 		debugMode
 	) {
-		if (SDL.SDL_GetPlatform() == "WinRT")
-			Examples.RemoveAt(1);
+		switch (SDL.SDL_GetPlatform())
+		{
+			case "WinRT":
+			case "Android":
+			case "iOS":
+				Examples.RemoveAt(1);
+				break;
+			default: break;
+		}
 
 		Logger.LogInfo("Welcome to the MoonWorks Graphics Tests program!");
 		Examples[ExampleIndex].Start(this);
@@ -92,6 +100,17 @@ public class Game1 : Game
 			MainWindow.SetSize(640, 480);
 			MainWindow.SetPositionCentered();
 			Examples[ExampleIndex].Start(this);
+		}
+
+		if (SDL.SDL_GetPlatform() == "Android" || SDL.SDL_GetPlatform() == "iOS")
+		{
+			if (LastIndexChange < DateTime.Now)
+			{
+				LastIndexChange = DateTime.Now.AddSeconds(3);
+
+				ExampleIndex = (ExampleIndex + 1) % Examples.Count;
+				Examples[ExampleIndex].Start(this);
+			}
 		}
 
 		Examples[ExampleIndex].Update(delta);

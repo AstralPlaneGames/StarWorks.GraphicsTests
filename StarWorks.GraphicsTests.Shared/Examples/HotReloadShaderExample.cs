@@ -26,21 +26,24 @@ class HotReloadShaderExample : Example
         VertexShader = ShaderCross.Create(
             GraphicsDevice,
             RootTitleStorage,
-            TestUtils.GetHLSLPath("Fullscreen.vert"),
+            IsMobile ? TestUtils.GetShaderPath("Fullscreen.vert") : TestUtils.GetHLSLPath("Fullscreen.vert"),
             "main",
-            ShaderCross.ShaderFormat.HLSL,
+            IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
             ShaderStage.Vertex
         );
 
         LoadPipeline();
 
-        Logger.LogInfo("Edit HotReload.frag.hlsl in the Content directory to reload the shader!");
+        if (!IsMobile)
+        {
+            Logger.LogInfo("Edit HotReload.frag.hlsl in the Content directory to reload the shader!");
 
-        Watcher = new FileSystemWatcher(Path.Combine(SDL3.SDL.SDL_GetBasePath(), "Content", "Shaders", "HLSL"));
-        Watcher.Filter = "HotReload.frag.hlsl";
-        Watcher.NotifyFilter = NotifyFilters.LastWrite;
-        Watcher.EnableRaisingEvents = true;
-        Watcher.Changed += OnChanged;
+            Watcher = new FileSystemWatcher(Path.Combine(SDL3.SDL.SDL_GetBasePath(), "Content", "Shaders", "HLSL"));
+            Watcher.Filter = "HotReload.frag.hlsl";
+            Watcher.NotifyFilter = NotifyFilters.LastWrite;
+            Watcher.EnableRaisingEvents = true;
+            Watcher.Changed += OnChanged;
+        }
     }
 
     public override void Update(TimeSpan delta)
@@ -91,9 +94,9 @@ class HotReloadShaderExample : Example
         var fragmentShader = ShaderCross.Create(
             GraphicsDevice,
             RootTitleStorage,
-            TestUtils.GetHLSLPath("HotReload.frag"),
+            IsMobile ? TestUtils.GetShaderPath("HotReload.frag") : TestUtils.GetHLSLPath("HotReload.frag"),
             "main",
-            ShaderCross.ShaderFormat.HLSL,
+            IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
             ShaderStage.Fragment
         );
 

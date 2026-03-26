@@ -45,18 +45,18 @@ class CPUSpriteBatchExample : Example
         Shader vertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuadColorWithMatrix.vert"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuadColorWithMatrix.vert") : TestUtils.GetHLSLPath("TexturedQuadColorWithMatrix.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader fragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuadColor.frag"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuadColor.frag") : TestUtils.GetHLSLPath("TexturedQuadColor.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

@@ -38,18 +38,18 @@ class DepthMSAAExample : Example
 		Shader cubeVertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("PositionColorWithMatrix.vert"),
+			IsMobile ? TestUtils.GetShaderPath("PositionColorWithMatrix.vert") : TestUtils.GetHLSLPath("PositionColorWithMatrix.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader cubeFragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("SolidColor.frag"),
+			IsMobile ? TestUtils.GetShaderPath("SolidColor.frag") : TestUtils.GetHLSLPath("SolidColor.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

@@ -18,17 +18,17 @@ class TriangleVertexBufferExample : Example
 		Shader vertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("PositionColor.vert"),
+			IsMobile ? TestUtils.GetShaderPath("PositionColor.vert") : TestUtils.GetHLSLPath("PositionColor.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 		Shader fragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("SolidColor.frag"),
+			IsMobile ? TestUtils.GetShaderPath("SolidColor.frag") : TestUtils.GetHLSLPath("SolidColor.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

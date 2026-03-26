@@ -40,17 +40,17 @@ class Texture3DCopyExample : Example
 		Shader vertShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuad.vert"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuad.vert") : TestUtils.GetHLSLPath("TexturedQuad.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 		Shader fragShader = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuad3D.frag"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuad3D.frag") : TestUtils.GetHLSLPath("TexturedQuad3D.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 

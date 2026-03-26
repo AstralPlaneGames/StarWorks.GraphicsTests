@@ -33,18 +33,18 @@ class CompressedTexturesExample : Example
 		Shader vertShaderModule = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuad.vert"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuad.vert") : TestUtils.GetHLSLPath("TexturedQuad.vert"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Vertex
 		);
 
 		Shader fragShaderModule = ShaderCross.Create(
 			GraphicsDevice,
 			RootTitleStorage,
-			TestUtils.GetHLSLPath("TexturedQuad.frag"),
+			IsMobile ? TestUtils.GetShaderPath("TexturedQuad.frag") : TestUtils.GetHLSLPath("TexturedQuad.frag"),
 			"main",
-			ShaderCross.ShaderFormat.HLSL,
+			IsMobile ? ShaderCross.ShaderFormat.SPIRV : ShaderCross.ShaderFormat.HLSL,
 			ShaderStage.Fragment
 		);
 
