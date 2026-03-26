@@ -1,12 +1,14 @@
 using System;
+using System.Collections.Generic;
 using MoonWorks;
 using MoonWorks.Graphics;
+using SDL3;
 
 namespace MoonWorksGraphicsTests;
 
 public class Game1 : Game
 {
-	Example[] Examples =
+	List<Example> Examples =
 	[
 		new ClearScreenExample(),
 		new ClearScreen_MultiWindowExample(),
@@ -58,6 +60,9 @@ public class Game1 : Game
 		ShaderFormat.SPIRV | ShaderFormat.DXIL | ShaderFormat.MSL | ShaderFormat.DXBC,
 		debugMode
 	) {
+		if (SDL.SDL_GetPlatform() == "WinRT")
+			Examples.RemoveAt(1);
+
 		Logger.LogInfo("Welcome to the MoonWorks Graphics Tests program!");
 		Examples[ExampleIndex].Start(this);
     }
@@ -71,7 +76,7 @@ public class Game1 : Game
 			ExampleIndex -= 1;
 			if (ExampleIndex < 0)
 			{
-				ExampleIndex = Examples.Length - 1;
+				ExampleIndex = Examples.Count - 1;
 			}
 
 			MainWindow.SetSize(640, 480);
@@ -82,7 +87,7 @@ public class Game1 : Game
 		{
 			Examples[ExampleIndex].Destroy();
 
-			ExampleIndex = (ExampleIndex + 1) % Examples.Length;
+			ExampleIndex = (ExampleIndex + 1) % Examples.Count;
 
 			MainWindow.SetSize(640, 480);
 			MainWindow.SetPositionCentered();
