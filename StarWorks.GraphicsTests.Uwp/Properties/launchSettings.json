@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "StarWorks.GraphicsTests.Uwp": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <Content Include="..\StarWorks.GraphicsTests.Shared\Content\**\*.*">
+          <Link>Content\%(RecursiveDir)%(Filename)%(Extension)</Link>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StarWorks.GraphicsTests.Shared\StarWorks.GraphicsTests.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
