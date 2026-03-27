@@ -9,4 +9,5 @@
     <Platform Project="x64" />
     <Deploy Solution="Debug|Any CPU" />
   </Project>
+  <Project Path="StarWorks/StarWorks.csproj" />
 </Solution>

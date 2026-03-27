@@ -1,0 +1,3 @@
+[submodule "StarWorks"]
+	path = StarWorks
+	url = git@github.com:AstralPlaneGames/StarWorks.git

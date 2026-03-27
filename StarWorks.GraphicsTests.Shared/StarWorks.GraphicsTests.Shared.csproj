@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="StarWorks" Version="1.0.0" />
+		<ProjectReference Include="..\StarWorks\StarWorks.csproj" />
 	</ItemGroup>
 
 </Project>
