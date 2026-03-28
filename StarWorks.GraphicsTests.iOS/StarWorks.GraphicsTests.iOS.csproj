@@ -12,11 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Examples/*.cs" />
-    <Compile Include="MobileExamples/*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <BundleResource Include="GameThumbnail.png" />
   </ItemGroup>
 
