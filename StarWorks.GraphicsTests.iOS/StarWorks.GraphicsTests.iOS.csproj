@@ -21,12 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
-      <BundleResource Include="..\StarWorks.GraphicsTests.Shared\Content\**\*.*">
+      <BundleResource Include="..\StarWorks.GraphicsTests\Content\**\*.*">
           <Link>Content\%(RecursiveDir)%(Filename)%(Extension)</Link>
       </BundleResource>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StarWorks.GraphicsTests.Shared\StarWorks.GraphicsTests.Shared.csproj" />
+    <ProjectReference Include="..\StarWorks.GraphicsTests\StarWorks.GraphicsTests.csproj" />
   </ItemGroup>
 </Project>

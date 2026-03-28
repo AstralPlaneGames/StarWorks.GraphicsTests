@@ -7,14 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <Content Include="..\StarWorks.GraphicsTests.Shared\Content\**\*.*">
+      <Content Include="..\StarWorks.GraphicsTests\Content\**\*.*">
           <Link>Content\%(RecursiveDir)%(Filename)%(Extension)</Link>
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StarWorks.GraphicsTests.Shared\StarWorks.GraphicsTests.Shared.csproj" />
+    <ProjectReference Include="..\StarWorks.GraphicsTests\StarWorks.GraphicsTests.csproj" />
   </ItemGroup>
 
 </Project>

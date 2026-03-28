@@ -23,12 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
-      <AndroidAsset Include="..\StarWorks.GraphicsTests.Shared\Content\**\*.*">
+      <AndroidAsset Include="..\StarWorks.GraphicsTests\Content\**\*.*">
           <Link>Content\%(RecursiveDir)%(Filename)%(Extension)</Link>
       </AndroidAsset>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StarWorks.GraphicsTests.Shared\StarWorks.GraphicsTests.Shared.csproj" />
+    <ProjectReference Include="..\StarWorks.GraphicsTests\StarWorks.GraphicsTests.csproj" />
   </ItemGroup>
 </Project>
