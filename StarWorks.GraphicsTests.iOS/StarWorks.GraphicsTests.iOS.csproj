@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-ios</TargetFramework>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <_ExportSymbolsExplicitly>false</_ExportSymbolsExplicitly>
+    <MtouchExtraArgs>-gcc_flags -v</MtouchExtraArgs>
+    <OptimizePNGs>false</OptimizePNGs>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Examples/*.cs" />
+    <Compile Include="MobileExamples/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BundleResource Include="GameThumbnail.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <BundleResource Include="..\StarWorks.GraphicsTests.Shared\Content\**\*.*">
+          <Link>Content\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      </BundleResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StarWorks.GraphicsTests.Shared\StarWorks.GraphicsTests.Shared.csproj" />
+  </ItemGroup>
+</Project>

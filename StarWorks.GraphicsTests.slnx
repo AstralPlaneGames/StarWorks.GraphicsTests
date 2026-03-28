@@ -7,6 +7,7 @@
     <Deploy Solution="Debug|Any CPU" />
   </Project>
   <Project Path="StarWorks.GraphicsTests.Desktop/StarWorks.GraphicsTests.Desktop.csproj" />
+  <Project Path="StarWorks.GraphicsTests.iOS/StarWorks.GraphicsTests.iOS.csproj" />
   <Project Path="StarWorks.GraphicsTests.Shared/StarWorks.GraphicsTests.Shared.csproj" />
   <Project Path="StarWorks.GraphicsTests.Uwp/StarWorks.GraphicsTests.Uwp.csproj">
     <Platform Project="x64" />
