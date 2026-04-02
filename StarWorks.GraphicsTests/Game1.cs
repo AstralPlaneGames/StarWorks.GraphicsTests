@@ -8,43 +8,7 @@ namespace MoonWorksGraphicsTests;
 
 public class Game1 : Game
 {
-	List<Example> Examples =
-	[
-		new ClearScreenExample(),
-		new ClearScreen_MultiWindowExample(),
-		new BasicStencilExample(),
-		new BasicTriangleExample(),
-		new CompressedTexturesExample(),
-		new FontExample(),
-		new BasicComputeExample(),
-		new ComputeUniformsExample(),
-		new CopyTextureExample(),
-		new CullFaceExample(),
-		new DrawIndirectExample(),
-		new GetBufferDataExample(),
-		new InstancingAndOffsetsExample(),
-		new MSAAExample(),
-		new DepthMSAAExample(),
-		new RenderTexture2DArrayExample(),
-		new RenderTexture2DExample(),
-		new RenderTextureCubeExample(),
-		new RenderTextureMipmapsExample(),
-		new StoreLoadExample(),
-		new Texture3DCopyExample(),
-		new Texture3DExample(),
-		new TexturedQuadExample(),
-		new TexturedAnimatedQuadExample(),
-		new TextureMipmapsExample(),
-		new TriangleVertexBufferExample(),
-		new VertexSamplerExample(),
-		new VideoPlayerExample(),
-		new WindowResizingExample(),
-		new CPUSpriteBatchExample(),
-		new ComputeSpriteBatchExample(),
-        new PullSpriteBatchExample(),
-		new CubeExample(),
-		new HotReloadShaderExample()
-	];
+	List<Example> Examples = new();
 
 	int ExampleIndex = 0;
 	DateTime LastIndexChange = DateTime.Now.AddSeconds(3);
@@ -61,15 +25,68 @@ public class Game1 : Game
 		ShaderFormat.SPIRV | ShaderFormat.DXIL | ShaderFormat.MSL | ShaderFormat.DXBC,
 		debugMode
 	) {
+		Examples.Add(new ClearScreenExample());
+
 		switch (SDL.SDL_GetPlatform())
 		{
 			case "WinRT":
 			case "Android":
 			case "iOS":
-				Examples.RemoveAt(1);
 				break;
-			default: break;
+			default:
+				Examples.Add(new ClearScreen_MultiWindowExample());
+				break;
 		}
+		Examples.Add(new BasicStencilExample());
+		Examples.Add(new BasicTriangleExample());
+
+		switch (SDL.SDL_GetPlatform())
+		{
+			case "Android":
+			case "iOS":
+				break;
+			default:
+				Examples.Add(new CompressedTexturesExample());
+				break;
+		}
+		Examples.Add(new FontExample());
+		Examples.Add(new BasicComputeExample());
+		Examples.Add(new ComputeUniformsExample());
+		Examples.Add(new CopyTextureExample());
+		Examples.Add(new CullFaceExample());
+		Examples.Add(new DrawIndirectExample());
+		Examples.Add(new GetBufferDataExample());
+		Examples.Add(new InstancingAndOffsetsExample());
+		switch (SDL.SDL_GetPlatform())
+		{
+			case "Android":
+			case "iOS":
+				break;
+			default:
+				Examples.Add(new MSAAExample());
+				Examples.Add(new DepthMSAAExample());
+				break;
+		}
+		Examples.Add(new RenderTexture2DArrayExample());
+		Examples.Add(new RenderTexture2DExample());
+		Examples.Add(new RenderTextureCubeExample());
+		Examples.Add(new RenderTextureMipmapsExample());
+		Examples.Add(new StoreLoadExample());
+		Examples.Add(new Texture3DCopyExample());
+		Examples.Add(new Texture3DExample());
+		Examples.Add(new TexturedQuadExample());
+		Examples.Add(new TexturedAnimatedQuadExample());
+		Examples.Add(new TextureMipmapsExample());
+		Examples.Add(new TriangleVertexBufferExample());
+		Examples.Add(new VertexSamplerExample());
+		Examples.Add(new VideoPlayerExample());
+		Examples.Add(new WindowResizingExample());
+		Examples.Add(new CPUSpriteBatchExample());
+		Examples.Add(new ComputeSpriteBatchExample());
+		Examples.Add(new PullSpriteBatchExample());
+		Examples.Add(new CubeExample());
+		Examples.Add(new HotReloadShaderExample());
+
 
 		Logger.LogInfo("Welcome to the MoonWorks Graphics Tests program!");
 		Examples[ExampleIndex].Start(this);
