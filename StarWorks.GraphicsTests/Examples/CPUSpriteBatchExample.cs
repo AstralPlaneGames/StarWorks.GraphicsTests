@@ -156,7 +156,7 @@ class CPUSpriteBatchExample : Example
 					Position = new Vector3(Random.Next(640), Random.Next(480), 0),
 					Rotation = (float) (Random.NextDouble() * System.Math.PI * 2),
 					Size = new Vector2(32, 32),
-					Color = new Vector4(1f, 1f, 1f, 1f)
+					Color = new Vector4(1f, 0f, 0f, 1f)
                 };
             }
 

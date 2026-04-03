@@ -126,6 +126,8 @@ public class Game1 : Game
 				LastIndexChange = DateTime.Now.AddSeconds(3);
 
 				ExampleIndex = (ExampleIndex + 1) % Examples.Count;
+				if (Examples[ExampleIndex] is CubeExample)
+					LastIndexChange = DateTime.Now.AddSeconds(10);
 				Examples[ExampleIndex].Start(this);
 			}
 		}
